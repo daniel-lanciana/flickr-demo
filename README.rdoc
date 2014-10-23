@@ -1,5 +1,7 @@
 == README
 
+Currently broken, but running demo at: http://safe-ocean-7893.herokuapp.com/
+
 == Brief
 
 The Flickr API has a method which allows you to search photos. Create a Ruby on Rails web application that allows users
@@ -19,40 +21,39 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 
 == Comments
 
-* Don't rebuild the wheel -- search for gems first!
-* First tried flickr_fu gem, but no support for SSL connections which are now mandatory
-* Tried will_paginate gem, but for unbroken lists. Just need a HTML solution.
-* No authentication necessary
-* Is it possible for a large image to not exist? Error handling.
-* Avoided using .getInfo for flickraw due to slow performance (plus all data in the search results). Extended their class.
-* Very little code. If there was more, put in controller or helper or other?
-* No point caching because search results subject to change and not inquiring further with .getInfo (could be cached)
-* RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter
+* Failed adopting the flickr_fu gem (doesn't support HTTPS)
+* Originally paginated Flickr API calls, but resorted to entire list in order to get pagination working in the app
+* No authentication or caching required
+* Extended Flickraw classes to support pagination of Array (not working on Flickraw Response objects).
+* RSpec pain: RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter
 interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, but could not load: LoadError. Running
 'rake spec' throws error 'NameError: uninitialized constant RSpec::Support'.
-* No self.errors avaiable in the controller, use flash instead
-* Spec files need suffix _spec
-* RPsec have matcher undefined (e.g. have(5).items)
-* .not_to obvious matcher not well documented
-* Learn more about expect(assigns(:foo))
-* No RSpec request specs?
-* Helper only for static methods, not overwritten class?
-* Can't use RSpec before(:all) to do API call only once (http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
-* Chose _q for thumbnail and _c for larger image (consistent sizes)
-* Borrowed Bootstrap themes, little bit of SASS
+* No self.errors avaiable in the controller, had to use flash.now instead
+* RSpec have(n).items undefined error
+* No unit tests, RSpec for all
+* RSpec couldn't avoid breaking DRY, before(:all) doesn't work for setting up requests
+(http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
+* Flickr image sizes: selected url_q for thumbnail and url_c for larger image
+* Bootstrap with SASS for styling
 * Thumbs per page at arbitrary 8
-* Checked API secret into source control (on purpose)
-* secret.yml for API credentials
-* production set config.assets.compile = true (not part of build release)
-* Have to install Postgres to deploy to Heroku?! Can't bundle install without pg_config..? bundle install --without production
+* Checked API credentials (secret.yml) into source control on purpose (for this exercise)
+* Handy Heroku tip for error logs: heroku run rails console
+* Code comments
+
+== Questions/Learn
+
+* Where is the correct place to put the Flickraw::Response class extension code? (currently in controller)
+* Understand the 'assigns' keyword in: expect(assigns(:foo))
+* Should I have written RSpec request tests?
+* Are helper classes only for self. methods?
+* Proper way to compile assets for production rather than (config.assets.compile = true)?
 
 == TO DO
 
+* Deploy Heroku requires Postgres installation?!?
 * Global properties (e.g. items per page in controller and test)
-* Deploy Heroku from Rubymine
-* RSpec: pagination, modal? all tests at once, ensure all pass
-* Modal popup (wasted like an hour!)
-* Heroku: heroku run rails console
+* RSpec pagination testing? Run all tests at once?
+* Modal popup for large images
 
 == Resources
 
@@ -60,10 +61,10 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * https://github.com/chaoyee/flkrshare (point to new gem)
 * http://hanklords.github.io/flickraw/ (the gem)
 * https://github.com/rspec/rspec-rails (RSpec)
-* https://twitter.com/anoras/status/438354633720090624
-* https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-* https://gist.github.com/them0nk/2166525
+* https://twitter.com/anoras/status/438354633720090624 (RSpec warning)
+* https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers (RSpec matchers)
+* https://gist.github.com/them0nk/2166525 (RSpec cheatsheet)
 * http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1 (Bootstrap)
-* https://github.com/mislav/will_paginate/blob/master/lib/will_paginate/array.rb
-* http://stackoverflow.com/questions/13187076/paginating-an-array-in-ruby-with-will-paginate
-* https://github.com/bootstrap-ruby/will_paginate-bootstrap
+* https://github.com/mislav/will_paginate/blob/master/lib/will_paginate/array.rb (paginate any array object)
+* http://stackoverflow.com/questions/13187076/paginating-an-array-in-ruby-with-will-paginate (good examples)
+* https://github.com/bootstrap-ruby/will_paginate-bootstrap (Bootstrap styled pagination)
