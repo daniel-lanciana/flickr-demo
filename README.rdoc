@@ -36,6 +36,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Checked API credentials (secret.yml) into source control on purpose (for this exercise)
 * Handy Heroku tip for error logs: heroku run rails console
 * Code comments
+* Deployed to Heroku (requires 'pg' gem defined although never used)
 
 == Questions/Learn
 
@@ -48,7 +49,6 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 
 == TO DO
 
-* Deploy Heroku requires Postgres installation?!?
 * Global properties (e.g. items per page in controller and test)
 * RSpec pagination testing? Run all tests at once?
 * Modal popup for large images
