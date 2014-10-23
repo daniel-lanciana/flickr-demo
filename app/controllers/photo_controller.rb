@@ -1,9 +1,7 @@
 require 'flickraw'
 
 =begin
-Size Suffixes
-
-The letter suffixes are as follows:
+Flickr image size suffix notation:
 
 s	small square 75x75
 q	large square 150x150
@@ -17,8 +15,6 @@ b	large, 1024 on longest side
 h	large 1600, 1600 on longest side
 k	large 2048, 2048 on longest side
 =end
-
-# Move?
 class FlickRaw::Response
   def url_q
     build_img_url.gsub('?', 'q')
@@ -33,42 +29,32 @@ class FlickRaw::Response
   end
 end
 
+# Main controller for the application. Handles searches and results.
 class PhotoController < ApplicationController
+  # Home page with no results
   def index
     @results = []
   end
 
-  # move to helper class?
+  # Search Flickr for photos
   def search
     FlickRaw.api_key    = '4665ef6fd72427931c8c09129cd44b5d'
     FlickRaw.shared_secret = '4dfa5ab177cb4971'
-    # :page => params[:page] || 1
-    #results = flickr.photos.search(:tags => 'cats', :per_page => 5, :page => 1).each do |photo|
-    #info = flickr.photos.getInfo(:photo_id => photo.id)
-
-    #puts 'https://farm' + photo.farm.to_s + '.staticflickr.com/' + photo.server.to_s + '/' + photo.id.to_s + '_' + photo.secret + '_t.jpg'
-    #puts photo.url_t
-
-    #thumb = FlickRaw.url_t(info)
-    #puts thumb
-    #large = FlickRaw.url_b(info)
-    #puts large
-    #puts ''
-    #end
-
-    #puts 'page = ' + params[:page]
 
     @results = []
 
-    # searching nothing not allowed
+    # Searching nothing throws an exception with the gem
     if params[:search_input].to_s.strip.empty?
+      # Once-off error message -- need to use .now
       flash.now[:error_msg] = "Please enter some text to search for..."
     else
+      # API call results from Flickr then add to an Array so we can paginate
       flickr.photos.search(:tags => params[:search_input], :per_page => 20).each do |a|
         @results << a
       end
 
-      @results = @results.paginate(:page => params[:page], :per_page => 5)
+      # Paginate and make instance variable available in the view
+      @results = @results.paginate(:page => params[:page], :per_page => 8)
     end
   end
 end

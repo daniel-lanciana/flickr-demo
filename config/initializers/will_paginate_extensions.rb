@@ -32,10 +32,12 @@ class Array
     end
   end
 
+  # Manually added, exception without
   def total_pages
     @total
   end
 
+  # Manually added, exception without
   def current_page
     @page
   end

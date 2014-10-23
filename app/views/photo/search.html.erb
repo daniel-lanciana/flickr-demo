@@ -8,16 +8,16 @@
   <br />
 
   <div class="row thumbs">
-    <% @results.each do |p| %>
+    <% @results.each do |photo, index| %>
         <div class="col-xs-6 col-md-3">
-          <a href="<%= p.url_c %>" class="thumbnail">
-            <%= image_tag p.url_q %>
+          <a data-toggle="lightbox" href="<%= photo.url_c %>" class="thumbnail" data-type="image">
+            <%= image_tag photo.url_q %>
           </a>
         </div>
     <% end %>
   </div>
 
   <% if @results.any? %>
-  <%= will_paginate @results %>
+    <%= will_paginate @results, renderer: BootstrapPagination::Rails %>
   <% end %>
 </div>

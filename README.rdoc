@@ -39,6 +39,8 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Helper only for static methods, not overwritten class?
 * Can't use RSpec before(:all) to do API call only once (http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
 * Chose _q for thumbnail and _c for larger image (consistent sizes)
+* Borrowed Bootstrap themes, little bit of SASS
+* Thumbs per page at arbitrary 8
 
 == TO DO
 
@@ -49,8 +51,7 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Deploy Heroku
 * Rdoc
 * Run all RSpec tests in one go * RSpec: pagination
-* Better pagination rendering -- like a taglib?
-* Modal popup
+* Modal popup (wasted like an hour!)
 
 == Resources
 
@@ -62,3 +63,6 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
 * https://gist.github.com/them0nk/2166525
 * http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1 (Bootstrap)
+* https://github.com/mislav/will_paginate/blob/master/lib/will_paginate/array.rb
+* http://stackoverflow.com/questions/13187076/paginating-an-array-in-ruby-with-will-paginate
+* https://github.com/bootstrap-ruby/will_paginate-bootstrap
