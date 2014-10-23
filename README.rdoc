@@ -1,6 +1,6 @@
 == README
 
-Currently broken, but running demo at: http://safe-ocean-7893.herokuapp.com/
+Currently broken, but once fixed the running demo will be at: http://safe-ocean-7893.herokuapp.com/
 
 == Brief
 
@@ -23,7 +23,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 
 * Failed adopting the flickr_fu gem (doesn't support HTTPS)
 * Originally paginated Flickr API calls, but resorted to entire list in order to get pagination working in the app
-* No authentication or caching required
+* No authentication required
 * Extended Flickraw classes to support pagination of Array (not working on Flickraw Response objects).
 * RSpec pain: RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, but could not load: LoadError. Running 'rake spec' throws error 'NameError: uninitialized constant RSpec::Support'.
 * No self.errors avaiable in the controller, had to use flash.now instead
@@ -44,6 +44,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Should I have written RSpec request tests?
 * Are helper classes only for self. methods?
 * Proper way to compile assets for production rather than (config.assets.compile = true)?
+* Possible to cache the query results until the following search (for pagination purposes), but requires persistant storage between stateless requests and therefore further investigation in a multi-user environment (cache/session, database. Performance currently acceptable.
 
 == TO DO
 
