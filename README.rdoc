@@ -51,6 +51,7 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Deploy Heroku from Rubymine
 * RSpec: pagination, modal? all tests at once, ensure all pass
 * Modal popup (wasted like an hour!)
+* Heroku: heroku run rails console
 
 == Resources
 
