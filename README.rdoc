@@ -25,14 +25,11 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Originally paginated Flickr API calls, but resorted to entire list in order to get pagination working in the app
 * No authentication or caching required
 * Extended Flickraw classes to support pagination of Array (not working on Flickraw Response objects).
-* RSpec pain: RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter
-interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, but could not load: LoadError. Running
-'rake spec' throws error 'NameError: uninitialized constant RSpec::Support'.
+* RSpec pain: RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, but could not load: LoadError. Running 'rake spec' throws error 'NameError: uninitialized constant RSpec::Support'.
 * No self.errors avaiable in the controller, had to use flash.now instead
 * RSpec have(n).items undefined error
 * No unit tests, RSpec for all
-* RSpec couldn't avoid breaking DRY, before(:all) doesn't work for setting up requests
-(http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
+* RSpec couldn't avoid breaking DRY, before(:all) doesn't work for setting up requests (http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
 * Flickr image sizes: selected url_q for thumbnail and url_c for larger image
 * Bootstrap with SASS for styling
 * Thumbs per page at arbitrary 8
