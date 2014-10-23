@@ -1,6 +1,6 @@
 == README
 
-Currently broken, but once fixed the running demo will be at: http://safe-ocean-7893.herokuapp.com/
+Running demo on Heroku: http://safe-ocean-7893.herokuapp.com/
 
 == Brief
 
