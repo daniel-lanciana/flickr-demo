@@ -58,12 +58,17 @@ class PhotoController < ApplicationController
 
     #puts 'page = ' + params[:page]
 
+    @results = []
+
     # searching nothing not allowed
     if params[:search_input].to_s.strip.empty?
-      flash[:error_msg] = "Please enter some text to search for..."
-      @results = []
+      flash.now[:error_msg] = "Please enter some text to search for..."
     else
-      @results = flickr.photos.search(:tags => params[:search_input], :per_page => 5, :page => params[:page] || 1)
+      flickr.photos.search(:tags => params[:search_input], :per_page => 20).each do |a|
+        @results << a
+      end
+
+      @results = @results.paginate(:page => params[:page], :per_page => 5)
     end
   end
 end

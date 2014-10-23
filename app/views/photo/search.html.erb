@@ -1,13 +1,23 @@
-<h1>Photo#search</h1>
-<p>Find me in app/views/photo/search.html.erb</p>
+<%= render 'header' %>
 
-<%= render 'form' %>
+<div class="container">
+  <h1 class="page-header">Results</h1>
 
-<div class="thumbs">
-<% @results.each do |p| %>
-    <a href="<%= p.url_c %>">
-    <%= image_tag p.url_q %>
-    </a>
-    <br />
-<% end %>
+  <%= render 'form' %>
+
+  <br />
+
+  <div class="row thumbs">
+    <% @results.each do |p| %>
+        <div class="col-xs-6 col-md-3">
+          <a href="<%= p.url_c %>" class="thumbnail">
+            <%= image_tag p.url_q %>
+          </a>
+        </div>
+    <% end %>
+  </div>
+
+  <% if @results.any? %>
+  <%= will_paginate @results %>
+  <% end %>
 </div>

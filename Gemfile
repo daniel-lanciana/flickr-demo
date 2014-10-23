@@ -39,6 +39,9 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'flickraw'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'rspec-rails'

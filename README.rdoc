@@ -48,10 +48,9 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Front-end bootstrap, paginator, modal larger image on click (jQuery), SASS?
 * Deploy Heroku
 * Rdoc
-* Cleanup files (e.g. old controller and generated tests)
-* Run all RSpec tests in one go
-* Tests:
- * RSpec: pagination
+* Run all RSpec tests in one go * RSpec: pagination
+* Better pagination rendering -- like a taglib?
+* Modal popup
 
 == Resources
 
@@ -62,3 +61,4 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * https://twitter.com/anoras/status/438354633720090624
 * https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
 * https://gist.github.com/them0nk/2166525
+* http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1 (Bootstrap)
