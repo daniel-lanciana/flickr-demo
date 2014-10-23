@@ -14,7 +14,7 @@ RSpec.describe "photo/search.html.erb", :type => :view do
     controller.params = { :search_input => 'cats' }
     assign(:results, controller.search)
     render
-    expect(rendered).to have_css(".thumbs img", :count => 5)
+    expect(rendered).to have_css(".thumbs img", :count => 8)
   end
 
   it "should contain links to larger images" do
