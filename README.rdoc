@@ -47,7 +47,7 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 
 == TO DO
 
-* Deploy Heroku
+* Deploy Heroku from Rubymine
 * RSpec: pagination, all tests at once, ensure all pass
 * Modal popup (wasted like an hour!)
 
