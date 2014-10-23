@@ -18,8 +18,20 @@ h	large 1600, 1600 on longest side
 k	large 2048, 2048 on longest side
 =end
 
-# Move to helper?
+# Move?
+class FlickRaw::Response
+  def url_q
+    build_img_url.gsub('?', 'q')
+  end
 
+  def url_c
+    build_img_url.gsub('?', 'c')
+  end
+
+  def build_img_url
+    "https://farm#{self.farm}.staticflickr.com/#{self.server}/#{self.id}_#{self.secret}_?.jpg"
+  end
+end
 
 class PhotoController < ApplicationController
   def index

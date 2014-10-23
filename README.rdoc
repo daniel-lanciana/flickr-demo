@@ -36,6 +36,9 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * .not_to obvious matcher not well documented
 * Learn more about expect(assigns(:foo))
 * No RSpec request specs?
+* Helper only for static methods, not overwritten class?
+* Can't use RSpec before(:all) to do API call only once (http://stackoverflow.com/questions/7676728/speeding-up-rspec-controllers-test-using-before-all-fails)
+* Chose _q for thumbnail and _c for larger image (consistent sizes)
 
 == TO DO
 
@@ -45,17 +48,10 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Front-end bootstrap, paginator, modal larger image on click (jQuery), SASS?
 * Deploy Heroku
 * Rdoc
-* Functional programming sweep
-* Zero results use case
-* Integration test using working API
 * Cleanup files (e.g. old controller and generated tests)
 * Run all RSpec tests in one go
 * Tests:
- * RSpec: thumbnail IMG tags
  * RSpec: pagination
- * RSpec: thumbnail to large photo
- * Unit test: url_t method
- * unit test: API call (e.g. page 1)
 
 == Resources
 
@@ -65,3 +61,4 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * https://github.com/rspec/rspec-rails (RSpec)
 * https://twitter.com/anoras/status/438354633720090624
 * https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+* https://gist.github.com/them0nk/2166525

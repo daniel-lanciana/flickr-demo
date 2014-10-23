@@ -5,7 +5,9 @@
 
 <div class="thumbs">
 <% @results.each do |p| %>
-    <%= image_tag p.url_t %>
+    <a href="<%= p.url_c %>">
+    <%= image_tag p.url_q %>
+    </a>
     <br />
 <% end %>
 </div>

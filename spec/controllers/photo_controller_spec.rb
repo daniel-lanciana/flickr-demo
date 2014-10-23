@@ -42,12 +42,31 @@ RSpec.describe PhotoController, :type => :controller do
 
     it "should contain different results on page 2" do
       post :search, :search_input => "cats"
-      page1_results = assigns(:results)
+      list1 = assigns(:results)
 
       post :search, :search_input => "cats", :page => 2
-      page2_results = assigns(:results)
+      list2 = assigns(:results)
 
-      expect(page1_results).not_to match_array(page2_results)
+      expect(list1).not_to match_array(list2)
+    end
+  end
+
+  # DRY not followed because before(:all) doesn't allow us to fetch the API call just once
+  describe "when FlickRaw::Response generates a thumbnail" do
+    it "should build a correct thumbnail image URL" do
+      post :search, :search_input => "cats"
+      response = assigns(:results)[0]
+      url_template = "https://farm#{response.farm}.staticflickr.com/#{response.server}/#{response.id}_#{response.secret}"
+
+      expect(response.url_q).to eq(url_template + "_q.jpg")
+    end
+
+    it "should build a correct large image URL" do
+      post :search, :search_input => "cats"
+      response = assigns(:results)[0]
+      url_template = "https://farm#{response.farm}.staticflickr.com/#{response.server}/#{response.id}_#{response.secret}"
+
+      expect(response.url_c).to eq(url_template + "_c.jpg")
     end
   end
 end
