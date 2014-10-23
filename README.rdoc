@@ -44,6 +44,7 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Checked API secret into source control (on purpose)
 * secret.yml for API credentials
 * production set config.assets.compile = true (not part of build release)
+* Have to install Postgres to deploy to Heroku?! Can't bundle install without pg_config..? bundle install --without production
 
 == TO DO
 
