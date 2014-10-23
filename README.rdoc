@@ -38,14 +38,14 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Code comments
 * Deployed to Heroku (requires 'pg' gem defined although never used)
 
-== Questions/Learn
+== Further Investigation
 
 * Where is the correct place to put the Flickraw::Response class extension code? (currently in controller)
-* Understand the 'assigns' keyword in: expect(assigns(:foo))
-* Should I have written RSpec request tests?
+* Understand the 'assigns' keyword better in: expect(assigns(:foo))
+* Should I have written RSpec request tests? Testing the pagination perhaps?
 * Are helper classes only for self. methods?
 * Proper way to compile assets for production rather than (config.assets.compile = true)?
-* Possible to cache the query results until the following search (for pagination purposes), but requires persistant storage between stateless requests and therefore further investigation in a multi-user environment (cache/session, database. Performance currently acceptable.
+* Possible to cache the query results until the following search (for pagination purposes), but requires persistant storage between stateless requests and therefore further investigation in a multi-user environment (cache/session, database). Performance currently acceptable.
 
 == TO DO
 
