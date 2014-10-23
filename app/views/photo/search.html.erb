@@ -1,0 +1,11 @@
+<h1>Photo#search</h1>
+<p>Find me in app/views/photo/search.html.erb</p>
+
+<%= render 'form' %>
+
+<div class="thumbs">
+<% @results.each do |p| %>
+    <%= image_tag p.url_t %>
+    <br />
+<% end %>
+</div>

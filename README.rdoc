@@ -1,6 +1,6 @@
 == README
 
-# Brief
+== Brief
 
 The Flickr API has a method which allows you to search photos. Create a Ruby on Rails web application that allows users
 to search for, and view, Flickr photos. The purpose of this exercise is to provide you with an opportunity to
@@ -8,7 +8,7 @@ demonstrate your ability to create a Ruby on Rails web application, to show us h
 working application, and to provide us with an opportunity to assess your problem solving, design and development
 skills. The requirements below are purposely light. The devil’s in the detail and it’s the little things that count.
 
-# Requirements
+== Requirements
 
 * When the user performs a search, they should see a paginated list of search results
 * When the user clicks on a search result, they should see a larger sized image
@@ -16,3 +16,52 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Commit to GitHub
 * Deploy to Heroku
 * Send your GitHub and Heroku links to PwC
+
+== Comments
+
+* Don't rebuild the wheel -- search for gems first!
+* First tried flickr_fu gem, but no support for SSL connections which are now mandatory
+* Tried will_paginate gem, but for unbroken lists. Just need a HTML solution.
+* No authentication necessary
+* Is it possible for a large image to not exist? Error handling.
+* Avoided using .getInfo for flickraw due to slow performance (plus all data in the search results). Extended their class.
+* Very little code. If there was more, put in controller or helper or other?
+* No point caching because search results subject to change and not inquiring further with .getInfo (could be cached)
+* RubyMine RSpec warning: The Spec::Runner::Formatter::TeamcityFormatter formatter uses the deprecated formatter
+interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, but could not load: LoadError. Running
+'rake spec' throws error 'NameError: uninitialized constant RSpec::Support'.
+* No self.errors avaiable in the controller, use flash instead
+* Spec files need suffix _spec
+* RPsec have matcher undefined (e.g. have(5).items)
+* .not_to obvious matcher not well documented
+* Learn more about expect(assigns(:foo))
+* No RSpec request specs?
+
+== TO DO
+
+* Load the flickr.yml file -> initialiser?
+* Loggining?
+* Global variables
+* Front-end bootstrap, paginator, modal larger image on click (jQuery), SASS?
+* Deploy Heroku
+* Rdoc
+* Functional programming sweep
+* Zero results use case
+* Integration test using working API
+* Cleanup files (e.g. old controller and generated tests)
+* Run all RSpec tests in one go
+* Tests:
+ * RSpec: thumbnail IMG tags
+ * RSpec: pagination
+ * RSpec: thumbnail to large photo
+ * Unit test: url_t method
+ * unit test: API call (e.g. page 1)
+
+== Resources
+
+* http://www.pixellatedvisions.com/2009/04/06/integrating-flickr-into-your-rails-website (starting point, gem doesn't work)
+* https://github.com/chaoyee/flkrshare (point to new gem)
+* http://hanklords.github.io/flickraw/ (the gem)
+* https://github.com/rspec/rspec-rails (RSpec)
+* https://twitter.com/anoras/status/438354633720090624
+* https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

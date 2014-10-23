@@ -1,0 +1,9 @@
+<%= form_tag '/photo/search' do %>
+    <% if flash[:error_msg] %>
+        <p class="error"><%= flash[:error_msg] %></p>
+    <% end %>
+
+    <%= label_tag(:search_input, "Search Flickr:") %>
+    <%= text_field_tag(:search_input, params[:search_input]) %>
+    <%= submit_tag("Search") %>
+<% end %>
