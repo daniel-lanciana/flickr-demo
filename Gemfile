@@ -4,8 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
-# Not supported on Heroku
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,9 +48,11 @@ group :development, :test do
   # Use for BDD/TDD
   gem 'rspec-rails'
   gem "capybara"
+  # Not supported on Heroku
+  gem 'sqlite3'
 end
 
 group :production do
   # gems specifically for Heroku go here
-  #gem "pg"
+  gem "pg"
 end
