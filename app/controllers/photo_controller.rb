@@ -38,8 +38,8 @@ class PhotoController < ApplicationController
 
   # Search Flickr for photos
   def search
-    FlickRaw.api_key    = '4665ef6fd72427931c8c09129cd44b5d'
-    FlickRaw.shared_secret = '4dfa5ab177cb4971'
+    FlickRaw.api_key = Rails.application.secrets.flickr_api_key
+    FlickRaw.shared_secret = Rails.application.secrets.flickr_shared_secret
 
     @results = []
 

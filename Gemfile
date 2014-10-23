@@ -38,12 +38,16 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use for Flickr API calls
 gem 'flickraw'
+# Use for a Twitter bootstrap theme
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+# Use for automatic pagination in the view
 gem 'will_paginate-bootstrap'
 
 group :development, :test do
+  # Use for BDD/TDD
   gem 'rspec-rails'
   gem "capybara"
 end

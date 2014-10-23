@@ -41,16 +41,14 @@ interface not supported directly by RSpec 3. Installed rspec-legacy_formatters, 
 * Chose _q for thumbnail and _c for larger image (consistent sizes)
 * Borrowed Bootstrap themes, little bit of SASS
 * Thumbs per page at arbitrary 8
+* Checked API secret into source control (on purpose)
+* secret.yml for API credentials
+* production set config.assets.compile = true (not part of build release)
 
 == TO DO
 
-* Load the flickr.yml file -> initialiser?
-* Loggining?
-* Global variables
-* Front-end bootstrap, paginator, modal larger image on click (jQuery), SASS?
 * Deploy Heroku
-* Rdoc
-* Run all RSpec tests in one go * RSpec: pagination
+* RSpec: pagination, all tests at once, ensure all pass
 * Modal popup (wasted like an hour!)
 
 == Resources
