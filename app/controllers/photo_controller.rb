@@ -49,7 +49,7 @@ class PhotoController < ApplicationController
       flash.now[:error_msg] = "Please enter some text to search for..."
     else
       # API call results from Flickr then add to an Array so we can paginate
-      flickr.photos.search(:tags => params[:search_input], :per_page => 20).each do |a|
+      flickr.photos.search(:tags => params[:search_input], :per_page => 100).each do |a|
         @results << a
       end
 
