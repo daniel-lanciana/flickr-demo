@@ -38,19 +38,32 @@ class PhotoController < ApplicationController
 
   # Search Flickr for photos
   def search
-    FlickRaw.api_key = Rails.application.secrets.flickr_api_key
-    FlickRaw.shared_secret = Rails.application.secrets.flickr_shared_secret
-
-    @results = []
-
     # Searching nothing throws an exception with the gem
     if params[:search_input].to_s.strip.empty?
       # Once-off error message -- need to use .now
       flash.now[:error_msg] = "Please enter some text to search for..."
+      @results = []
     else
-      # API call results from Flickr then add to an Array so we can paginate
-      flickr.photos.search(:tags => params[:search_input], :per_page => 100).each do |a|
-        @results << a
+      # Read from the cache
+      @results = Rails.cache.read(params[:search_input])
+
+      # If API results are not currently in the cache
+      if @results == nil
+        @results = []
+
+        # Only need to initialise when calling the API
+        FlickRaw.api_key = Rails.application.secrets.flickr_api_key
+        FlickRaw.shared_secret = Rails.application.secrets.flickr_shared_secret
+
+        # API call results from Flickr then add to an Array so we can paginate
+        flickr.photos.search(:tags => params[:search_input], :per_page => 100).each do |a|
+          @results << a
+        end
+
+        # Write to the cache to speed up future requests/pagination
+        Rails.cache.write(params[:search_input], @results)
+      else
+        logger.info "Getting cached Flicker API results for: #{params[:search_input]}"
       end
 
       # Paginate and make instance variable available in the view
