@@ -37,6 +37,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Handy Heroku tip for error logs: heroku run rails console
 * Code comments
 * Deployed to Heroku (requires 'pg' gem defined although never used)
+* Basic caching to improve performance, but results will become stale
 
 == Further Investigation
 
@@ -45,7 +46,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Should I have written RSpec request tests? Testing the pagination perhaps?
 * Are helper classes only for self. methods?
 * Proper way to compile assets for production rather than (config.assets.compile = true)?
-* Possible to cache the query results until the following search (for pagination purposes), but requires persistant storage between stateless requests and therefore further investigation in a multi-user environment (cache/session, database). Performance currently acceptable.
+* Memcached as the caching solution? Need better understanding of global/session and expiry/invalidation.
 
 == TO DO
 
