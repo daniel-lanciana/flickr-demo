@@ -1,6 +1,8 @@
 require 'flickraw'
 
 =begin
+Extended FlickRaw class to implement some helper methods for use in the view.
+
 Flickr image size suffix notation:
 
 s	small square 75x75
@@ -38,36 +40,31 @@ class PhotoController < ApplicationController
 
   # Search Flickr for photos
   def search
+    @results = []
+
     # Searching nothing throws an exception with the gem
     if params[:search_input].to_s.strip.empty?
       # Once-off error message -- need to use .now
       flash.now[:error_msg] = "Please enter some text to search for..."
-      @results = []
     else
-      # Read from the cache
-      @results = Rails.cache.read(params[:search_input])
+      # Cache results for faster pagination
+      @results = Rails.cache.fetch(params[:search_input], :expires_in => AppConfig.cache_expiry_minutes.minutes,
+                                   :race_condition_ttl => AppConfig.cache_race_ttl_minutes.minutes) do
 
-      # If API results are not currently in the cache
-      if @results == nil
-        @results = []
+        logger.info "Caching Flicker API results for: #{params[:search_input]}"
 
         # Only need to initialise when calling the API
         FlickRaw.api_key = Rails.application.secrets.flickr_api_key
         FlickRaw.shared_secret = Rails.application.secrets.flickr_shared_secret
 
         # API call results from Flickr then add to an Array so we can paginate
-        flickr.photos.search(:tags => params[:search_input], :per_page => 100).each do |a|
+        flickr.photos.search(:tags => params[:search_input], :per_page => AppConfig.flickr_max_results).each do |a|
           @results << a
         end
-
-        # Write to the cache to speed up future requests/pagination
-        Rails.cache.write(params[:search_input], @results)
-      else
-        logger.info "Getting cached Flicker API results for: #{params[:search_input]}"
       end
 
       # Paginate and make instance variable available in the view
-      @results = @results.paginate(:page => params[:page], :per_page => 8)
+      @results = @results.paginate(:page => params[:page], :per_page => AppConfig.results_per_page)
     end
   end
 end

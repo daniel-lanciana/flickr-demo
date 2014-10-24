@@ -38,6 +38,7 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Code comments
 * Deployed to Heroku (requires 'pg' gem defined although never used)
 * Basic caching to improve performance, but results will become stale
+* Global config YAML properties file (AppConfig)
 
 == Further Investigation
 
@@ -50,7 +51,6 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 
 == TO DO
 
-* Global properties (e.g. items per page in controller and test)
 * RSpec pagination testing? Run all tests at once?
 * Modal popup for large images
 
@@ -67,3 +67,4 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * https://github.com/mislav/will_paginate/blob/master/lib/will_paginate/array.rb (paginate any array object)
 * http://stackoverflow.com/questions/13187076/paginating-an-array-in-ruby-with-will-paginate (good examples)
 * https://github.com/bootstrap-ruby/will_paginate-bootstrap (Bootstrap styled pagination)
+* http://stackoverflow.com/questions/592554/best-way-to-create-custom-config-options-for-my-rails-app (custom config)

@@ -32,7 +32,7 @@ RSpec.describe PhotoController, :type => :controller do
 
     it "should return maximum items for a popular search" do
       post :search, :search_input => "cats"
-      expect(assigns(:results).length).to eq(8)
+      expect(assigns(:results).length).to eq(AppConfig.results_per_page)
     end
 
     it "should return zero items for a rubbish search" do
