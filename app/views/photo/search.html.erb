@@ -10,8 +10,8 @@
   <div class="row thumbs">
     <% @results.each do |photo, index| %>
         <div class="col-xs-6 col-md-3">
-          <a data-toggle="lightbox" href="<%= photo.url_c %>" class="thumbnail" data-type="image">
-            <%= image_tag photo.url_q %>
+          <a href="<%= photo.url_c %>" data-toggle="lightbox" class="thumbnail" data-title="<%= photo.title %>">
+            <img src="<%= photo.url_q %>" class="img-responsive">
           </a>
         </div>
     <% end %>

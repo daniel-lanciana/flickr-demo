@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 // = require_tree .
+$(document).ready(function ($) {
+    // delegate calls to data-toggle="lightbox"
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        return $(this).ekkoLightbox();
+    });
+});

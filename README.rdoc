@@ -39,6 +39,8 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 * Deployed to Heroku (requires 'pg' gem defined although never used)
 * Basic caching to improve performance, but results will become stale
 * Global config YAML properties file (AppConfig)
+* Form uses GET requests to support the pagination gem
+* Bootstrap lightbox for displaying larger images in the modal popup
 
 == Further Investigation
 
@@ -52,7 +54,6 @@ skills. The requirements below are purposely light. The devil’s in the detail 
 == TO DO
 
 * RSpec pagination testing? Run all tests at once?
-* Modal popup for large images
 
 == Resources
 
